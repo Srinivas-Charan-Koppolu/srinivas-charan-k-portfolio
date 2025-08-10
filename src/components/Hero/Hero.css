@@ -1,0 +1,145 @@
+/* Main Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px; /* more breathing room */
+  color: var(--text-color);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background image layer */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../assets/bg.jpg") center center / cover no-repeat;
+  opacity: 0.4; /* Reduced opacity */
+  z-index: 0;
+}
+
+/* Dark overlay + fade at bottom */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.6) 60%,
+    var(--secondary-color) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  max-width: 600px;
+  z-index: 2;
+  padding: 20px; /* Optional inner padding */
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-content h1 span {
+  color: var(--primary-color);
+}
+
+.hero-content h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.hero-content p {
+  margin-top: 20px;
+  font-size: 1rem;
+  max-width: 500px;
+  color: var(--text-muted);
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Profile image */
+.hero-image {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+.hero-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  border: 4px solid var(--border-color);
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+  }
+
+  .hero-content {
+    padding: 0;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+    padding: 0;
+  }
+}

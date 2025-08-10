@@ -1,0 +1,163 @@
+/* Section Styling */
+.projects-section {
+  padding: 80px 0;
+}
+
+/* Title Styling */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+}
+
+.section-title .highlight {
+  color: var(--primary-color);
+}
+
+/* Horizontal Scrolling Wrapper */
+.projects-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  position: relative; /* Added relative position for scroll arrows */
+}
+
+/* Project Card Styling */
+.project-card {
+  background: var(--surface-dark);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Project Image */
+.project-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--border-color);
+}
+
+/* Project Info Section */
+.project-info {
+  padding: 20px;
+}
+
+.project-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-item {
+  background: var(--primary-dark);
+  color: var(--text-color);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.tech-item:hover {
+  background-color: var(--highlight-blue);
+}
+
+/* Project Links Section */
+.project-links {
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  font-size: 0.9rem;
+  color: var(--highlight-blue);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Scroll Arrows Styling */
+.scroll-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+  padding: 0 20px;
+}
+
+.scroll-left,
+.scroll-right {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-left:hover,
+.scroll-right:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.scroll-left i,
+.scroll-right i {
+  font-size: 20px;
+}
+
+/* Mobile Styling (for smaller screens) */
+@media (max-width: 768px) {
+  .projects-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: auto;
+  }
+
+  .project-card {
+    width: 100%;
+  }
+
+  .scroll-arrows {
+    display: none; /* Hide arrows on mobile */
+  }
+}

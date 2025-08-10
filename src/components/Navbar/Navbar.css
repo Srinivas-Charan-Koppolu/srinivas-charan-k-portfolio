@@ -1,0 +1,101 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--surface-dark);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Logo Styling */
+.logo a {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logo a:hover {
+  transform: scale(1.05);
+}
+
+/* Short Logo: SCK */
+.logo-s {
+  color: var(--primary-color);
+}
+.logo-c {
+  color: var(--primary-color);
+}
+.logo-k {
+  color: var(--primary-color);
+}
+
+/* Full Name Logo */
+.logo-name-s {
+  color: var(--primary-color);
+}
+.logo-name-c {
+  color: var(--primary-color);
+}
+.logo-name-k {
+  color: var(--primary-color);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+/* Underline Hover Effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
