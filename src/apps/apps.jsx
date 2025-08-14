@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import appsList from "./appsData";
+import "./Apps.css"; // Import the external CSS
 
-/**
- * Renders the list of all available apps.
- */
-function renderAppList(navigate) {
+function AppList() {
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <div className="app-list-container">
       <h1>All Apps</h1>
-      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+      <div className="app-grid">
         {appsList.map((app) => (
-          <div
-            key={app.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              width: "250px",
-            }}
-          >
+          <div key={app.id} className="app-card">
             <h2>{app.title}</h2>
             <p>{app.description}</p>
             <button onClick={() => navigate(`/apps/${app.url}`)}>
@@ -31,59 +24,58 @@ function renderAppList(navigate) {
   );
 }
 
-/**
- * Finds the selected app object from appsData.js using a case-insensitive match.
- */
-function findSelectedApp(appName) {
-  return appsList.find((app) => app.url.toLowerCase() === appName.toLowerCase());
-}
-
-/**
- * Dynamically loads the app component by folder name.
- */
-function loadAppComponent(folder, setLoadedComponent, setError) {
-  import(`./${folder}/${folder}.jsx`)
-    .then((module) => {
-      setLoadedComponent(() => module.default);
-    })
-    .catch(() => {
-      setError(
-        `Could not load component from src/apps/${folder}/${folder}.jsx`
-      );
-    });
-}
-
-/**
- * Main Apps component
- */
 export default function Apps() {
   const { appName } = useParams();
-  const navigate = useNavigate();
   const [LoadedComponent, setLoadedComponent] = useState(null);
   const [error, setError] = useState(null);
 
-  // If no specific app is requested, show the list
-  if (!appName) {
-    return renderAppList(navigate);
-  }
+  const blockedApps = ["personal"];
+  const selectedApp =
+    appName &&
+    !blockedApps.includes(appName.toLowerCase()) &&
+    appsList.find((app) => app.url.toLowerCase() === appName.toLowerCase());
 
-  // Find the selected app
-  const selectedApp = findSelectedApp(appName);
-  if (!selectedApp) {
-    return <h2>App "{appName}" not found in appsData.js.</h2>;
-  }
-
-  // Load the app component dynamically
   useEffect(() => {
-    loadAppComponent(selectedApp.folder, setLoadedComponent, setError);
-  }, [selectedApp.folder]);
+    setLoadedComponent(null);
+    setError(null);
+
+    if (!selectedApp) return;
+
+    import(`./${selectedApp.folder}/${selectedApp.folder}.jsx`)
+      .then((module) => {
+        setLoadedComponent(() => module.default);
+      })
+      .catch(() => {
+        setError(
+          `Could not load component from src/apps/${selectedApp.folder}/${selectedApp.folder}.jsx`
+        );
+      });
+  }, [selectedApp]);
+
+  if (!appName) {
+    return <AppList />;
+  }
+
+  if (blockedApps.includes(appName.toLowerCase())) {
+    return <h2 className="error-message">403 - No Access</h2>;
+  }
+
+  if (!selectedApp) {
+    return (
+      <h2 className="status-message">
+        App "{appName}" not found in appsData.js.
+      </h2>
+    );
+  }
 
   if (error) {
-    return <h2>{error}</h2>;
+    return <h2 className="error-message">{error}</h2>;
   }
 
   if (!LoadedComponent) {
-    return <h2>Loading {selectedApp.title}...</h2>;
+    return (
+      <h2 className="status-message">Loading {selectedApp.title}...</h2>
+    );
   }
 
   return <LoadedComponent />;
