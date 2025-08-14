@@ -1,10 +1,5 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/apps", "destination": "/index.html" },
-    { "source": "/apps/(.*)", "destination": "/index.html" }
-  ],
-  "redirects": [
-      { "source": "/(.*)", "destination": "/403.html", "statusCode": 403 }
-    ]
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
