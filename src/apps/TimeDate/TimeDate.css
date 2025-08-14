@@ -1,0 +1,210 @@
+.time-date-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin: 30px;
+  margin: 10vh auto;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* CLOCK WRAPPER: holds clock + digital time */
+.time-date-container__clock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Analog Clock Container */
+.time-date-container__clock {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border: 12px solid #333;
+  border-radius: 50%;
+  background: white;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(0, 0, 0, 0.1);
+  margin: 20px 0 10px 0;
+  /* Rotate entire clock so hands start pointing up at 12 */
+  transform: rotateZ(-90deg);
+}
+
+/* Center dot of clock */
+.time-date-container__center {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #333;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Pulse animation on center dot */
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    background-color: #333;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    background-color: #555;
+  }
+}
+
+/* Clock hands base style */
+.time-date-container__hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Pivot from left center so rotation behaves like a clock hand */
+  transform-origin: left center;
+  transform: rotate(90deg);
+  transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+  border-radius: 4px;
+}
+
+/* Smooth transitions for hour and minute hands */
+.time-date-container__hand--hour,
+.time-date-container__hand--minute {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hour hand */
+.time-date-container__hand--hour {
+  height: 8px;
+  width: 80px;
+  background: #333;
+  z-index: 3;
+}
+
+/* Minute hand */
+.time-date-container__hand--minute {
+  height: 6px;
+  width: 110px;
+  background: #666;
+  z-index: 2;
+}
+
+/* Second hand */
+.time-date-container__hand--second {
+  height: 2px;
+  width: 130px;
+  background: red;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+/* Clock numbers around the dial */
+.time-date-container__number {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  user-select: none;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  top: 50%;
+  left: 50%;
+  /* rotation and translation handled inline via style prop */
+}
+
+/* Digital time below clock */
+.time-date-container__digital-time {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white !important;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+.time-date-container__digital-time.fade {
+  opacity: 0.3;
+}
+
+/* Calendar container */
+.time-date-container__calendar {
+  width: 320px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Calendar title */
+.time-date-container__calendar-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+/* Grid for days of week and dates */
+.time-date-container__calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  transform: translateX(-16px); /* Center grid in calendar */
+}
+
+/* Day names header */
+.time-date-container__calendar-day-name {
+  font-weight: 700;
+  text-align: center;
+  color: #444;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* Individual calendar cells (dates) */
+.time-date-container__calendar-cell {
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 4px;
+  user-select: none;
+  font-size: 1rem;
+  color: #222;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect on calendar cells */
+.time-date-container__calendar-cell:hover {
+  cursor: pointer;
+  background-color: #555;
+  color: white;
+  transform: scale(1.1);
+  font-weight: 700;
+}
+
+/* Highlight current day */
+.time-date-container__calendar-cell--today {
+  background: #333;
+  color: white;
+  font-weight: 700;
+  animation: glow 2.5s infinite ease-in-out;
+}
+
+/* Glow animation on today's date */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 6px 2px rgba(51, 51, 51, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(51, 51, 51, 0.9);
+  }
+}
