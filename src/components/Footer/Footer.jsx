@@ -6,6 +6,8 @@ import {
   FaMediumM,
   FaTelegramPlane,
   FaWhatsapp,
+  // import app icon
+  FaGooglePlay
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -13,7 +15,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-left">
-          <p>© {new Date().getFullYear()} K Srinivas Charan. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} K Srinivas Charan. All Rights Reserved. </p>
         </div>
         <div className="footer-right">
           <a
@@ -55,6 +57,12 @@ const Footer = () => {
             title="WhatsApp"
           >
             <FaWhatsapp />
+          </a>
+          <a
+            href="/apps"
+            title="My Apps"
+          >
+            <FaGooglePlay />
           </a>
         </div>
       </div>

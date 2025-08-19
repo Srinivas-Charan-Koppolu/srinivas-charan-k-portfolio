@@ -2,6 +2,7 @@
    Global Variables
    ========================= */
 :root {
+  /* Existing vars */
   --primary-color: #00bcd4;
   --primary-dark: #007e8a;
   --highlight-blue: #2196f3;
@@ -16,6 +17,23 @@
 
   --font-main: 'Poppins', sans-serif;
   --max-width: 1200px;
+
+  /* 🚀 New neon/dark theme vars for apps */
+  --apps-bg: #0a0a0f; /* overall background */
+  --apps-card-bg: #141422; /* card background */
+  --apps-card-border: rgba(0, 255, 255, 0.2); /* subtle glowing border */
+
+  --apps-text: #e0e0ff; /* main text */
+  --apps-text-muted: #7f7fa1; /* secondary text */
+  --apps-text-glow: #0ff; /* neon glow for hover/highlight */
+
+  --apps-button-bg: #0ff; /* neon cyan */
+  --apps-button-hover: #00a3a3; /* darker cyan */
+  --apps-button-text: #0a0a0f; /* dark bg text */
+
+  --apps-accent-purple: #b100ff;
+  --apps-accent-pink: #ff0077;
+  --apps-accent-green: #00ff99;
 }
 
 /* =========================
