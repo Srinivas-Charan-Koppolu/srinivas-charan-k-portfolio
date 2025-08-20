@@ -248,6 +248,8 @@ export default function CountdownTimer() {
     );
   }
 
+  document.title = `Srinivas Charan K | ${title} - ${targetDate.toLocaleString()}`;
+
   return (
     <div className="countdown-container">
       <div className="countdown-card">

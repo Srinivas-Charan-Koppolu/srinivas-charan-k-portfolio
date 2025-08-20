@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Apps from "./apps/apps"; // main apps page & dynamic handler
 
 function App() {
+  document.title = "Srinivas Charan K | Portfolio"; // Set the document title
   return (
     <Router>
       <Navbar />

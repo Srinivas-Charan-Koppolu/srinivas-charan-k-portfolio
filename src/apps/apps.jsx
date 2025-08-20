@@ -29,6 +29,8 @@ export default function Apps() {
   const [LoadedComponent, setLoadedComponent] = useState(null);
   const [error, setError] = useState(null);
 
+  document.title = `Srinivas Charan K | ${appName || "Apps"}`; // Set the document title dynamically
+
   const blockedApps = ["personal"];
   const selectedApp =
     appName &&

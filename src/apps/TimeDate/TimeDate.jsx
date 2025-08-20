@@ -148,6 +148,8 @@ const CurrentMonthCalendar = () => {
     calendarCells.push(day);
   }
 
+  document.title = `Srinivas Charan K | ${currentDate}`;
+
   return (
     <div className="time-date-container__calendar">
       <h2 className="time-date-container__calendar-title">
