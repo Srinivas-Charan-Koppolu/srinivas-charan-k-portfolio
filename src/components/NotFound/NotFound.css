@@ -1,0 +1,31 @@
+.not-found {
+  text-align: center;
+  padding: 50px;
+  background-color: #f8f9fa;
+}
+
+.not-found h1 {
+  font-size: 2.5rem;
+  color: #dc3545; /* Bootstrap danger color */
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  color: #6c757d; /* Bootstrap secondary color */
+}
+
+.not-found a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.not-found a:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+
