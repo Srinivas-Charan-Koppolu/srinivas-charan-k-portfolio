@@ -14,7 +14,7 @@ function AppList() {
           <div key={app.id} className="app-card">
             <h2>{app.title}</h2>
             <p>{app.description}</p>
-            <button onClick={() => navigate(`/apps/${app.url}`)}>
+            <button onClick={() => navigate(`/myapps/${app.url}`)}>
               {app.buttonText}
             </button>
           </div>
@@ -49,7 +49,7 @@ export default function Apps() {
       })
       .catch(() => {
         setError(
-          `Could not load component from src/apps/${selectedApp.folder}/${selectedApp.folder}.jsx`
+          `Could not load component from src/myapps/${selectedApp.folder}/${selectedApp.folder}.jsx`
         );
       });
   }, [selectedApp]);

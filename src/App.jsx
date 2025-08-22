@@ -19,8 +19,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/apps" element={<Apps />} />
-        <Route path="/apps/:appName" element={<Apps />} />
+        <Route path="/myapps" element={<Apps />} />
+        <Route path="/myapps/:appName" element={<Apps />} />
         <Route path="/secret" element={<Secret /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>

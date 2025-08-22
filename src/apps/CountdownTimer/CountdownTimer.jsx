@@ -19,20 +19,9 @@ export default function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({});
   const [completed, setCompleted] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const defaultTarget = new Date(Date.now() + 24 * 60 * 60 * 1000);
-
-  // --- datetime state for sync
-  const [dateTimeValue, setDateTimeValue] = useState(() => {
-    return `${defaultTarget.getFullYear()}-${String(
-      defaultTarget.getMonth() + 1
-    ).padStart(2, "0")}-${String(defaultTarget.getDate()).padStart(
-      2,
-      "0"
-    )}T${String(defaultTarget.getHours()).padStart(2, "0")}:${String(
-      defaultTarget.getMinutes()
-    ).padStart(2, "0")}`;
-  });
 
   let payload = null;
   if (data) {
@@ -44,6 +33,7 @@ export default function CountdownTimer() {
     }
   }
 
+  // values for timer target
   const year = payload?.year || defaultTarget.getFullYear();
   const month = payload?.month || defaultTarget.getMonth() + 1;
   const day = payload?.day || defaultTarget.getDate();
@@ -57,23 +47,20 @@ export default function CountdownTimer() {
   const calculateTimeLeft = () => {
     const now = new Date();
     const diff = targetDate.getTime() - now.getTime();
+    const absDiff = Math.abs(diff);
+
+    const time = {
+      totalHours: Math.floor(absDiff / (1000 * 60 * 60)),
+      days: Math.floor(absDiff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((absDiff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((absDiff / (1000 * 60)) % 60),
+      seconds: Math.floor((absDiff / 1000) % 60),
+    };
 
     if (diff <= 0) {
       setCompleted(true);
-      return {
-        days: Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((Math.abs(diff) / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((Math.abs(diff) / (1000 * 60)) % 60),
-        seconds: Math.floor((Math.abs(diff) / 1000) % 60),
-      };
     }
-
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / 1000) % 60),
-    };
+    return time;
   };
 
   useEffect(() => {
@@ -86,6 +73,17 @@ export default function CountdownTimer() {
   }, [data]);
 
   // --- sync datetime-local <-> form
+  const [dateTimeValue, setDateTimeValue] = useState(() => {
+    return `${defaultTarget.getFullYear()}-${String(
+      defaultTarget.getMonth() + 1
+    ).padStart(2, "0")}-${String(defaultTarget.getDate()).padStart(
+      2,
+      "0"
+    )}T${String(defaultTarget.getHours()).padStart(2, "0")}:${String(
+      defaultTarget.getMinutes()
+    ).padStart(2, "0")}`;
+  });
+
   const handleDateTimeChange = (e) => {
     const newVal = e.target.value;
     setDateTimeValue(newVal);
@@ -125,6 +123,7 @@ export default function CountdownTimer() {
     );
     const randomEnc = ENC_KEYS[Math.floor(Math.random() * ENC_KEYS.length)];
     navigate(`?enc=${randomEnc}&data=${encoded}`);
+    setEditMode(false);
   };
 
   const quickCountdown = (seconds, title = "Quick Timer") => {
@@ -151,29 +150,46 @@ export default function CountdownTimer() {
     setTimeout(() => setShowToast(false), 2000);
   };
 
-  if (!data) {
+  // -------------------
+  // No data yet OR edit mode → show form
+  // -------------------
+  if (!data || editMode) {
+    const defaultValues = payload || {
+      title: "My Event",
+      year: defaultTarget.getFullYear(),
+      month: defaultTarget.getMonth() + 1,
+      day: defaultTarget.getDate(),
+      hour: defaultTarget.getHours(),
+      minute: defaultTarget.getMinutes(),
+      second: defaultTarget.getSeconds(),
+    };
+
     return (
       <div className="countdown-container">
         <div className="countdown-card">
-          <h1 className="heading">Quick Timers</h1>
-          <div className="quick-buttons">
-            <button onClick={() => quickCountdown(600, "10 Min Timer")}>10 Min</button>
-            <button onClick={() => quickCountdown(1800, "30 Min Timer")}>30 Min</button>
-            <button onClick={() => quickCountdown(3600, "1 Hour Timer")}>1 Hour</button>
-            <button onClick={() => quickCountdown(7200, "2 Hour Timer")}>2 Hours</button>
-            <button onClick={() => quickCountdown(86400, "1 Day Timer")}>1 Day</button>
-            <button onClick={() => quickCountdown(604800, "1 Week Timer")}>1 Week</button>
-            <button onClick={() => quickCountdown(86400 * 30, "30 Days Timer")}>30 Days</button>
-          </div>
+          {!editMode && (
+            <>
+              <h1 className="heading">Quick Timers</h1>
+              <div className="quick-buttons">
+                <button onClick={() => quickCountdown(600, "10 Min Timer")}>10 Min</button>
+                <button onClick={() => quickCountdown(1800, "30 Min Timer")}>30 Min</button>
+                <button onClick={() => quickCountdown(3600, "1 Hour Timer")}>1 Hour</button>
+                <button onClick={() => quickCountdown(7200, "2 Hour Timer")}>2 Hours</button>
+                <button onClick={() => quickCountdown(86400, "1 Day Timer")}>1 Day</button>
+                <button onClick={() => quickCountdown(604800, "1 Week Timer")}>1 Week</button>
+                <button onClick={() => quickCountdown(86400 * 30, "30 Days Timer")}>30 Days</button>
+              </div>
+            </>
+          )}
 
-          <h1>Create Countdown</h1>
+          <h1>{editMode ? "Edit Countdown" : "Create Countdown"}</h1>
 
           {/* datetime-local */}
           <div className="datetime-picker">
             <label>
               Pick Date & Time (Local):
               <input
-                class="force-bg-white-theme"
+                className="force-bg-white-theme"
                 type="datetime-local"
                 value={dateTimeValue}
                 onChange={handleDateTimeChange}
@@ -200,80 +216,86 @@ export default function CountdownTimer() {
                 <tr>
                   <td>Title:</td>
                   <td>
-                    <input type="text" name="title" defaultValue="My Event" required />
+                    <input type="text" name="title" defaultValue={defaultValues.title} required />
                   </td>
                 </tr>
                 <tr>
                   <td>Year:</td>
                   <td>
-                    <input type="number" name="year" defaultValue={defaultTarget.getFullYear()} onChange={handleFormSync} />
+                    <input type="number" name="year" defaultValue={defaultValues.year} onChange={handleFormSync} />
                   </td>
                 </tr>
                 <tr>
                   <td>Month:</td>
                   <td>
-                    <input type="number" name="month" defaultValue={defaultTarget.getMonth() + 1} onChange={handleFormSync} />
+                    <input type="number" name="month" defaultValue={defaultValues.month} onChange={handleFormSync} />
                   </td>
                 </tr>
                 <tr>
                   <td>Day:</td>
                   <td>
-                    <input type="number" name="day" defaultValue={defaultTarget.getDate()} onChange={handleFormSync} />
+                    <input type="number" name="day" defaultValue={defaultValues.day} onChange={handleFormSync} />
                   </td>
                 </tr>
                 <tr>
                   <td>Hour:</td>
                   <td>
-                    <input type="number" name="hour" defaultValue={defaultTarget.getHours()} onChange={handleFormSync} />
+                    <input type="number" name="hour" defaultValue={defaultValues.hour} onChange={handleFormSync} />
                   </td>
                 </tr>
                 <tr>
                   <td>Minute:</td>
                   <td>
-                    <input type="number" name="minute" defaultValue={defaultTarget.getMinutes()} onChange={handleFormSync} />
+                    <input type="number" name="minute" defaultValue={defaultValues.minute} onChange={handleFormSync} />
                   </td>
                 </tr>
                 <tr>
                   <td>Second:</td>
                   <td>
-                    <input type="number" name="second" defaultValue={defaultTarget.getSeconds()} onChange={handleFormSync} />
+                    <input type="number" name="second" defaultValue={defaultValues.second} onChange={handleFormSync} />
                   </td>
                 </tr>
               </tbody>
             </table>
-            <button type="submit">Generate</button>
+            <button type="submit">{editMode ? "Update" : "Generate"}</button>
           </form>
         </div>
       </div>
     );
   }
 
+  // -------------------
+  // Display countdown
+  // -------------------
   document.title = `Srinivas Charan K | ${title} - ${targetDate.toLocaleString()}`;
 
   return (
     <div className="countdown-container">
       <div className="countdown-card">
+        {completed && <div className="ribbon">C O M P L E T E D</div>}
+        {showToast && <div className="toast">Link Copied!</div>}
+
         <h1>{title}</h1>
         <p className="target-date">Target: {targetDate.toLocaleString()}</p>
 
         {completed ? (
           <div className="countdown-time completed">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s ago
+            <div className="hours-left">({timeLeft.totalHours} hours ago)</div>
           </div>
         ) : (
           <div className="countdown-time active">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+            <div className="hours-left">({timeLeft.totalHours} hours left)</div>
           </div>
         )}
 
         <div className="actions">
           <button onClick={copyLink}>Copy Link</button>
-          {/* <button onClick={() => navigate("")}>Edit</button> */}
+          <button onClick={() => setEditMode(true)}>Edit</button>
           <button onClick={() => navigate("")}>New Timer</button>
         </div>
       </div>
-
-      {showToast && <div className="toast">Link Copied!</div>}
     </div>
   );
 }

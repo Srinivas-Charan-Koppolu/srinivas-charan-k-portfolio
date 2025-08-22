@@ -59,7 +59,7 @@ const Footer = () => {
             <FaWhatsapp />
           </a>
           <a
-            href="/apps"
+            href="/myapps"
             title="My Apps"
           >
             <FaGooglePlay />

@@ -8,6 +8,7 @@
 }
 
 .countdown-card {
+  position: relative; /* needed for ribbon + toast */
   background: var(--apps-card-bg);
   border: 1px solid var(--apps-card-border);
   border-radius: 10px;
@@ -17,6 +18,13 @@
   text-align: center;
   color: var(--apps-text);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.countdown-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .heading {
@@ -45,6 +53,10 @@
 
 .quick-buttons button:hover {
   background: var(--apps-button-hover);
+}
+
+.quick-buttons button:active {
+  transform: scale(0.96);
 }
 
 .datetime-picker {
@@ -108,9 +120,15 @@
   background: var(--apps-button-hover);
 }
 
+.countdown-form button:active {
+  transform: scale(0.96);
+}
+
 .countdown-time {
   font-size: 1.5rem;
   margin: 20px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .countdown-time.active {
@@ -119,6 +137,15 @@
 
 .countdown-time.completed {
   color: var(--apps-accent-pink);
+  opacity: 0.9;
+  text-decoration: line-through;
+}
+
+.hours-left {
+  font-size: 0.95rem;
+  font-weight: normal;
+  margin-top: 5px;
+  color: var(--apps-text);
 }
 
 .actions {
@@ -142,20 +169,57 @@
   background: var(--apps-button-hover);
 }
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--apps-accent-purple);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  animation: fadeInOut 2s forwards;
+.actions button:active {
+  transform: scale(0.96);
 }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(20px); }
-  20% { opacity: 1; transform: translateY(0); }
+/* Toast inside the countdown card (top popup) */
+.toast {
+  position: absolute;
+  top: 20px; /* ensures it appears above card content */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--apps-accent-purple);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  animation: dropInOut 4s forwards;
+  z-index: 10;
+}
+
+@keyframes dropInOut {
+  0% { opacity: 0; transform: translate(-50%, -50px) scale(0.95); }
+  20% { opacity: 1; transform: translate(-50%, 50px) scale(1); }
   80% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0; transform: translate(-50%, -50px) scale(0.95); }
+}
+
+/* Ribbon for expired timers */
+.ribbon {
+  position: absolute;
+  top: 35px;
+  right: -45px;
+  transform: rotate(45deg);
+  background: red;
+  color: white;
+  padding: 5px 40px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .countdown-card {
+    padding: 15px;
+  }
+  .countdown-form table {
+    width: 100%;
+  }
+  .countdown-time {
+    font-size: 1.2rem;
+  }
 }
