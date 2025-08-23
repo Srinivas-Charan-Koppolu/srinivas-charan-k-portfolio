@@ -1,6 +1,8 @@
 /* Section Styling */
 .projects-section {
   padding: 80px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Title Styling */
@@ -11,67 +13,124 @@
 
 .section-title h2 {
   font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .section-title .highlight {
   color: var(--primary-color);
 }
 
+.section-title p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
 /* Horizontal Scrolling Wrapper */
 .projects-wrapper {
   display: flex;
   overflow-x: auto;
-  gap: 30px;
+  gap: 50px;
   padding: 20px 0;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  position: relative; /* Added relative position for scroll arrows */
+  position: relative;
+  zoom: 0.8;
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+}
+
+.projects-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 /* Project Card Styling */
 .project-card {
   background: var(--surface-dark);
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+  width: 480px; /* wider and balanced */
   flex-shrink: 0;
   scroll-snap-align: center;
+  margin: 5px 20px;
+
+  /* 3D effect base */
+  transform-style: preserve-3d;
+  perspective: 1200px;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-10px) scale(1.05) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),   /* deep shadow */
+    0 5px 15px rgba(0, 0, 0, 0.4),    /* mid shadow */
+    0 0 25px rgba(0, 255, 180, 0.4);  /* glowing aura */
+  border: 1px solid rgba(0, 255, 180, 0.3); /* neon mint border */
 }
 
-/* Project Image */
+/* Project Image Container */
+.project-img {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
 .project-img img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-bottom: 3px solid var(--border-color);
+  filter: blur(2px);
+  transform: scale(1.1);
+  transition: all 0.8s ease;
+}
+
+/* Vintage black gradient overlay */
+.project-img .img-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 63, 69, 0.75));
+  pointer-events: none;
+}
+
+/* Hover: clear + zoom */
+.project-card:hover .project-img img {
+  filter: blur(0);
+  transform: scale(1.25);
+  transform: translateY(5px);
 }
 
 /* Project Info Section */
 .project-info {
-  padding: 20px;
+  padding: 18px;
 }
 
 .project-info h3 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
   color: var(--text-color);
+}
+
+.project-info .date {
+  font-size: 0.85rem;
+  color: var(--highlight-blue);
+  margin-bottom: 10px;
+  font-style: italic;
 }
 
 .project-info p {
   font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 15px;
+  line-height: 1.5;
 }
 
+/* Tech tags */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
@@ -82,19 +141,21 @@
 .tech-item {
   background: var(--primary-dark);
   color: var(--text-color);
-  padding: 4px 8px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
   font-size: 0.8rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .tech-item:hover {
   background-color: var(--highlight-blue);
+  color: #fff;
 }
 
-/* Project Links Section */
+/* Project Links */
 .project-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
@@ -126,18 +187,19 @@
 
 .scroll-left,
 .scroll-right {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.55);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .scroll-left:hover,
 .scroll-right:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
 
 .scroll-left i,
@@ -150,7 +212,7 @@
   .projects-wrapper {
     flex-direction: column;
     gap: 20px;
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 
   .project-card {

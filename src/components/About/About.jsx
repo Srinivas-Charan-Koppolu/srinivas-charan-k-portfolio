@@ -3,39 +3,32 @@ import "./About.css";
 
 const About = () => {
   return (
-    <section id="about" className="about-section container">
-      <div className="section-title">
-        <h2 className="main-heading">
-          <span className="highlight">About</span> Me
-        </h2>
-        <p className="subtitle">
-          Discover my journey, skills, and passion for technology
-        </p>
-        <div className="title-decoration"></div>
-      </div>
+<section id="about" className="about-section container">
+  <div className="section-title">
+    <h2 className="main-heading">
+      <span className="highlight">Origin</span> Story
+    </h2>
+    <p className="subtitle">
+      EMPATHY OVER CONFLICT LEADS PEACE
+    </p>
+    <div className="title-decoration"></div>
+  </div>
 
-      <div className="about-card">
-        <div className="card-header">
-          <div className="icon-box">
-            <i className="fas fa-user"></i>
-          </div>
-          <h3>Who Am I?</h3>
-        </div>
-        <div className="card-body">
-          <p>
-            I'm a passionate <span className="highlight-text">Python Programmer</span> and{" "}
-            <span className="highlight-text">Machine Learning enthusiast</span>, currently pursuing
-            <strong> B.Tech CSE Honors</strong> at KL University. My journey is defined by persistence, continuous learning, and a strong desire to innovate.
-          </p>
-          <p>
-            I specialize in building full-stack applications and AI-driven solutions. I strongly believe in technology's potential to solve real-world problems and make a positive impact.
-          </p>
-          <p>
-            Outside coding, I keep up with emerging tech trends, contribute to open-source projects, and am always striving to grow as a developer.
-          </p>
-        </div>
-      </div>
-    </section>
+  <div className="about-content">
+    <p>
+      I’m <strong>K Srinivas Charan</strong>, a student at <span className="highlight-text">KL University</span> pursuing B.Tech. My passion lies deeply in <span className="highlight-text">Python</span> and <span className="highlight-text">Machine Learning</span>, where I continuously explore new ways to build software that fits real-life needs and respects solid engineering principles.
+    </p>
+    <p>
+      I approach development thoughtfully — not just writing code, but crafting solutions that are precise, efficient, and meaningful. I believe in creating software that solves problems with care, delivering results that truly matter.
+    </p>
+    <p>
+      Outside of technology, I find joy in cycling, drawing, and storytelling — a hobby that lets me weave creativity and imagination into my life. I’m an amateur writer, casually exploring narratives whenever inspiration strikes.
+    </p>
+    <p>
+      For me, coding is more than a skill — it’s a way to connect ideas, people, and purpose, striving always for empathy over conflict, and peace through understanding.
+    </p>
+  </div>
+</section>
   );
 };
 

@@ -79,33 +79,42 @@ img {
   padding: 0 20px;
 }
 
-
+/* Scrollbar */
 ::-webkit-scrollbar {
-  height: 5px; /* Adjust the height of the scrollbar */
+  height: 6px; /* Slightly thicker for visibility */
+  width: 8px; /* For vertical scrollbars */
 }
 
-/* Thumb (Draggable part) */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, var(--primary-color), var(--highlight-blue)); /* Gradient background */
-  border-radius: 20px;
-  border: 3px solid var(--background-light); /* Adds space around the thumb */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow around the thumb */
-  transition: background 0.3s ease; /* Smooth transition on hover */
-}
-
-/* Scrollbar Track (Background part) */
+/* Scrollbar Track */
 ::-webkit-scrollbar-track {
-  background-color: var(--background-light);
+  background: var(--background-light);
   border-radius: 20px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.08); /* Softer inner shadow */
 }
 
-/* Hover Effect on Scrollbar Thumb */
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary-color), var(--highlight-blue));
+  border-radius: 20px;
+  border: 2px solid var(--background-light); /* Thinner border for elegance */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, var(--primary-dark), var(--highlight-blue)); /* Change gradient on hover */
+  background: linear-gradient(135deg, var(--primary-dark), var(--highlight-blue));
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* Active Scrollbar */
-::-webkit-scrollbar:focus {
-  outline: none;
+/* Active (when dragging) */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, var(--highlight-blue), var(--primary-dark));
+  transform: scale(1.05);
+}
+
+/* Optional: corner styling for resizable elements */
+::-webkit-scrollbar-corner {
+  background: var(--background-light);
 }

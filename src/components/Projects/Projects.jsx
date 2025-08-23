@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Projects.css";
 
+import thrinehaImg from "./../../assets/projects/Thrineha.png"
 import gamezImg from "./../../assets/projects/GameZ.jpg";
 import moodImg from "./../../assets/projects/play-your-mood.jpg";
 import erpImg from "./../../assets/projects/erp-classroom-finder.png";
@@ -10,13 +11,26 @@ import flapImg from "./../../assets/projects/flap-the-box.jpg";
 
 const projects = [
   {
+    title: "Thrineha - AI Chatbot",
+    img: thrinehaImg,
+    description:
+      "Thrineha is an advanced AI chatbot platform integrating Flask, React, and Machine Learning for intelligent text analysis with secure storage on MongoDB. Built with a principled software engineering approach.",
+    tech: ["Python (Flask)", "Machine Learning", "Text Analysis", "MongoDB", "React", "Security", "Software Principled", "JavaScript", "HTML", "CSS", "Jinja"],
+    github: "",
+    demo: "",
+    deployed: "https://thrineha.vercel.app",
+    date: "2025 (Ongoing)",
+  },
+  {
     title: "GameZ - Online Multiplayer Gaming Platform",
     img: gamezImg,
     description:
-      "An online multiplayer gaming platform where users can track and spend game coins acquired through physical transactions. Includes admin panel, messaging system using pywhatkit, and multiplayer integration plans.",
+      "An online multiplayer gaming platform where users can track and spend game coins acquired through physical transactions. Includes admin panel, messaging system, and multiplayer integration plans.",
     tech: ["Python (Flask)", "SQLite", "JavaScript", "HTML", "CSS", "Jinja"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "Apr 2025",
   },
   {
     title: "Play Your Mood - Personalized Music Streaming Web App",
@@ -26,6 +40,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "Java", "Spring", "React", "Postman"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "Apr 2025",
   },
   {
     title: "ERP - Classroom Finder",
@@ -35,6 +51,8 @@ const projects = [
     tech: ["Python", "Flask", "SQLite", "HTML", "CSS", "JavaScript"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "Mar 2025",
   },
   {
     title: "VibeStream - Social Media Platform",
@@ -44,6 +62,8 @@ const projects = [
     tech: ["Python", "Flask", "SQLite3", "HTML", "CSS", "JavaScript"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "Jan 2025",
   },
   {
     title: "Audio Feel - Web-based Music Player",
@@ -53,6 +73,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "May 2024",
   },
   {
     title: "Flap The Box - 2D HTML5 Canvas Game",
@@ -62,6 +84,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "Canvas"],
     github: "",
     demo: "",
+    deployed: "",
+    date: "2022",
   },
 ];
 
@@ -70,9 +94,9 @@ const Projects = () => {
 
   const scroll = (direction) => {
     if (direction === "left") {
-      scrollContainer.current.scrollBy({ left: -300, behavior: "smooth" });
+      scrollContainer.current.scrollBy({ left: -400, behavior: "smooth" });
     } else {
-      scrollContainer.current.scrollBy({ left: 300, behavior: "smooth" });
+      scrollContainer.current.scrollBy({ left: 400, behavior: "smooth" });
     }
   };
 
@@ -86,14 +110,17 @@ const Projects = () => {
           <p>Some of my recent work and contributions</p>
         </div>
 
+        {/* Projects Scroll Wrapper */}
         <div className="projects-wrapper" ref={scrollContainer}>
           {projects.map((project, index) => (
             <div className="project-card" key={index}>
               <div className="project-img">
                 <img src={project.img} alt={project.title} />
+                <div className="img-overlay"></div>
               </div>
               <div className="project-info">
                 <h3>{project.title}</h3>
+                <p className="date">{project.date}</p>
                 <p>{project.description}</p>
                 <div className="project-tech">
                   {project.tech.map((t, i) => (
@@ -105,12 +132,17 @@ const Projects = () => {
                 <div className="project-links">
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noreferrer">
-                      <i className="fab fa-github"></i> View Code
+                      <i className="fab fa-github"></i> Code
                     </a>
                   )}
                   {project.demo && (
                     <a href={project.demo} target="_blank" rel="noreferrer">
-                      <i className="fas fa-external-link-alt"></i> Live Demo
+                      <i className="fas fa-external-link-alt"></i> Demo
+                    </a>
+                  )}
+                  {project.deployed && (
+                    <a href={project.deployed} target="_blank" rel="noreferrer">
+                      <i className="fas fa-globe"></i> Live Site
                     </a>
                   )}
                 </div>
