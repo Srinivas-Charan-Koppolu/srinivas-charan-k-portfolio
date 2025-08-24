@@ -81,7 +81,7 @@ export default function B500() {
         return;
       }
 
-      if (input.toLowerCase().endsWith("-2005")) {
+      if (input.toLowerCase().endsWith("-2005-invalid")) {
         setUsername("User");
         setUnlockedSide("NAME");
         setSubmitting(false);
