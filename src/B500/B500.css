@@ -1,0 +1,796 @@
+/* =========================
+   Cyberpunk Theme Variables
+   ========================= */
+:root {
+  --B500-neon-blue: #00f3ff;
+  --B500-neon-pink: #ff00ff;
+  --B500-neon-purple: #b100ff;
+  --B500-neon-green: #00ff99;
+  --B500-neon-red: #ff0088;
+  --B500-neon-yellow: #ffff00;
+  --B500-neon-orange: #ff7700;
+  --B500-cyber-dark: #050518;
+  --B500-cyber-darker: #020210;
+  --B500-cyber-grid: rgba(0, 243, 255, 0.1);
+  --B500-cyber-text: #ffffff;
+  --B500-cyber-glow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* =========================
+   Cyber Background Effects
+   ========================= */
+.B500-cyber-bg {
+  background-color: var(--B500-cyber-dark);
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.B500-cyber-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--B500-cyber-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--B500-cyber-grid) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.B500-cyber-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, 
+    rgba(0, 243, 255, 0.8) 0%, 
+    rgba(0, 243, 255, 0) 100%);
+  z-index: 1;
+  animation: B500-scanline 4s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes B500-scanline {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+/* =========================
+   Cyber Loader Container
+   ========================= */
+.B500-cyber-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+  background-color: var(--B500-cyber-darker);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.B500-cyber-loader-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--B500-cyber-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--B500-cyber-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+/* =========================
+   Cyber Loader Elements
+   ========================= */
+.B500-cyber-loader {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.B500-cyber-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid transparent;
+  box-shadow: 0 0 15px currentColor;
+}
+
+.B500-cyber-circle-1 {
+  width: 80vh;
+  height: 80vh;
+  border-top: 2px solid var(--B500-neon-blue);
+  animation: B500-spin 15s linear infinite, B500-pulse 5s ease-in-out infinite alternate;
+}
+
+.B500-cyber-circle-2 {
+  width: 70vh;
+  height: 70vh;
+  border-right: 2px solid var(--B500-neon-pink);
+  animation: B500-spin 12s linear infinite reverse, B500-pulse 4s ease-in-out infinite alternate;
+}
+
+.B500-cyber-circle-3 {
+  width: 60vh;
+  height: 60vh;
+  border-bottom: 2px solid var(--B500-neon-green);
+  animation: B500-spin 10s linear infinite, B500-pulse 3s ease-in-out infinite alternate;
+}
+
+.B500-cyber-circle-4 {
+  width: 50vh;
+  height: 50vh;
+  border-left: 2px solid var(--B500-neon-purple);
+  animation: B500-spin 8s linear infinite reverse, B500-pulse 2.5s ease-in-out infinite alternate;
+}
+
+.B500-cyber-circle-5 {
+  width: 40vh;
+  height: 40vh;
+  border-top: 2px solid var(--B500-neon-red);
+  animation: B500-spin 6s linear infinite, B500-pulse 2s ease-in-out infinite alternate;
+}
+
+.B500-cyber-circle-6 {
+  width: 30vh;
+  height: 30vh;
+  border-right: 2px solid var(--B500-neon-yellow);
+  animation: B500-spin 4s linear infinite reverse, B500-pulse 1.5s ease-in-out infinite alternate;
+}
+
+.B500-cyber-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(70deg);
+  border: 1px solid;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.B500-cyber-ring-1 {
+  width: 75vh;
+  height: 75vh;
+  border-color: var(--B500-neon-blue);
+  animation: B500-orbit-ring-1 18s linear infinite;
+}
+
+.B500-cyber-ring-2 {
+  width: 55vh;
+  height: 55vh;
+  border-color: var(--B500-neon-pink);
+  animation: B500-orbit-ring-2 15s linear infinite reverse;
+}
+
+.B500-cyber-ring-3 {
+  width: 35vh;
+  height: 35vh;
+  border-color: var(--B500-neon-green);
+  animation: B500-orbit-ring-3 12s linear infinite;
+}
+
+.B500-cyber-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: var(--B500-neon-blue);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 20px var(--B500-neon-blue),
+    0 0 40px var(--B500-neon-blue),
+    0 0 60px var(--B500-neon-blue);
+  animation: B500-core-pulse 2s ease-in-out infinite alternate;
+  z-index: 10;
+}
+
+.B500-cyber-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  z-index: 5;
+}
+
+.B500-cyber-orb-1 {
+  width: 20px;
+  height: 20px;
+  background: var(--B500-neon-pink);
+  animation: B500-orbit-1 8s linear infinite;
+}
+
+.B500-cyber-orb-2 {
+  width: 15px;
+  height: 15px;
+  background: var(--B500-neon-green);
+  animation: B500-orbit-2 10s linear infinite reverse;
+}
+
+.B500-cyber-orb-3 {
+  width: 18px;
+  height: 18px;
+  background: var(--B500-neon-purple);
+  animation: B500-orbit-3 12s linear infinite;
+}
+
+.B500-cyber-orb-4 {
+  width: 12px;
+  height: 12px;
+  background: var(--B500-neon-yellow);
+  animation: B500-orbit-4 9s linear infinite reverse;
+}
+
+.B500-cyber-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.B500-cyber-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+  animation: B500-particle-float 6s infinite;
+}
+
+.B500-cyber-particle:nth-child(odd) {
+  background: var(--B500-neon-blue);
+}
+
+.B500-cyber-particle:nth-child(even) {
+  background: var(--B500-neon-pink);
+}
+
+.B500-cyber-particle:nth-child(3n) {
+  background: var(--B500-neon-green);
+}
+
+.B500-cyber-particle:nth-child(5n) {
+  background: var(--B500-neon-purple);
+}
+
+.B500-cyber-particle:nth-child(7n) {
+  background: var(--B500-neon-yellow);
+}
+
+.B500-cyber-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.B500-hud-line {
+  position: absolute;
+  background: rgba(0, 243, 255, 0.3);
+  box-shadow: 0 0 10px var(--B500-neon-blue);
+}
+
+.B500-hud-line-1 {
+  top: 25%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  animation: B500-hud-scan 3s linear infinite;
+}
+
+.B500-hud-line-2 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  animation: B500-hud-scan 4s linear infinite reverse;
+}
+
+.B500-hud-line-3 {
+  top: 0;
+  left: 25%;
+  width: 1px;
+  height: 100%;
+  animation: B500-hud-scan-vertical 5s linear infinite;
+}
+
+.B500-hud-line-4 {
+  top: 0;
+  left: 75%;
+  width: 1px;
+  height: 100%;
+  animation: B500-hud-scan-vertical 6s linear infinite reverse;
+}
+
+/* Binary rain effect */
+.B500-binary-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.B500-binary-digit {
+  position: absolute;
+  color: var(--B500-neon-green);
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  opacity: 0;
+  animation: B500-binary-fall 10s linear infinite;
+  text-shadow: 0 0 5px var(--B500-neon-green);
+}
+
+/* Random code strings */
+.B500-random-codes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.B500-code-string {
+  position: absolute;
+  color: var(--B500-neon-blue);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  opacity: 0.7;
+  animation: B500-code-flicker 5s infinite alternate;
+  text-shadow: 0 0 5px var(--B500-neon-blue);
+}
+
+/* Wave effects */
+.B500-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  opacity: 0.1;
+  background: linear-gradient(180deg, transparent, var(--B500-neon-blue));
+  animation: B500-wave-move 8s linear infinite;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%2300f3ff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%2300f3ff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%2300f3ff'/%3E%3C/svg%3E");
+  mask-size: 1200px 100%;
+}
+
+.B500-wave-1 {
+  animation-delay: 0s;
+  height: 15%;
+}
+
+.B500-wave-2 {
+  animation-delay: -2s;
+  height: 10%;
+  opacity: 0.15;
+}
+
+.B500-wave-3 {
+  animation-delay: -4s;
+  height: 5%;
+  opacity: 0.2;
+}
+
+/* =========================
+   Cyber Text Elements
+   ========================= */
+.B500-cyber-text {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--B500-neon-blue);
+  text-shadow: var(--B500-cyber-glow);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 10;
+}
+
+.B500-cyber-text-glitch {
+  animation: B500-text-glitch 3s infinite;
+}
+
+.B500-cyber-text-dots {
+  animation: B500-dots-pulse 1.5s infinite;
+}
+
+.B500-progress-container {
+  width: 400px;
+  margin-top: 2rem;
+  z-index: 10;
+}
+
+.B500-progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--B500-neon-blue);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px var(--B500-neon-blue);
+}
+
+.B500-progress-fill {
+  height: 100%;
+  width: 87.3%;
+  background: linear-gradient(90deg, var(--B500-neon-blue), var(--B500-neon-purple));
+  animation: B500-progress-pulse 2s infinite alternate;
+}
+
+.B500-progress-text {
+  margin-top: 0.5rem;
+  font-family: 'Courier New', monospace;
+  color: var(--B500-neon-green);
+  text-shadow: 0 0 5px var(--B500-neon-green);
+  font-size: 1rem;
+}
+
+.B500-scrolling-text {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  overflow: hidden;
+  height: 30px;
+  z-index: 10;
+}
+
+.B500-scroll-content {
+  color: var(--B500-neon-green);
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  animation: B500-scroll 20s linear infinite;
+  text-shadow: 0 0 5px var(--B500-neon-green);
+}
+
+/* =========================
+   Cyber Form Elements
+   ========================= */
+.B500-cyber-title {
+  color: var(--B500-neon-blue);
+  text-shadow: var(--B500-cyber-glow);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+  position: relative;
+  z-index: 2;
+}
+
+.B500-cyber-instruction {
+  color: var(--B500-neon-green);
+  text-shadow: 0 0 5px var(--B500-neon-green);
+  font-family: 'Courier New', monospace;
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: center;
+}
+
+.B500-cyber-form {
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+}
+
+.B500-cyber-input {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 1px solid var(--B500-neon-blue) !important;
+  color: white !important;
+  font-family: 'Courier New', monospace !important;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 243, 255, 0.3),
+    0 0 10px var(--B500-neon-blue) !important;
+  width: 300px !important;
+  font-size: 1.1rem !important;
+  padding: 1rem !important;
+}
+
+.B500-cyber-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.B500-cyber-input:focus {
+  box-shadow: 
+    inset 0 0 15px rgba(0, 243, 255, 0.5),
+    0 0 20px var(--B500-neon-blue),
+    0 0 30px var(--B500-neon-blue) !important;
+}
+
+.B500-cyber-button {
+  background: transparent !important;
+  border: 1px solid var(--B500-neon-pink) !important;
+  color: var(--B500-neon-pink) !important;
+  text-shadow: 0 0 5px var(--B500-neon-pink);
+  font-family: 'Courier New', monospace !important;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  margin-top: 1.5rem !important;
+}
+
+.B500-cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.B500-cyber-button:hover::before {
+  left: 100%;
+}
+
+.B500-cyber-button:hover {
+  background: rgba(255, 0, 255, 0.1) !important;
+  box-shadow: 
+    0 0 20px var(--B500-neon-pink),
+    0 0 40px var(--B500-neon-pink),
+    0 0 60px var(--B500-neon-pink) !important;
+}
+
+/* =========================
+   Animations
+   ========================= */
+@keyframes B500-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes B500-pulse {
+  0% { opacity: 0.3; box-shadow: 0 0 5px currentColor; }
+  100% { opacity: 1; box-shadow: 0 0 20px currentColor; }
+}
+
+@keyframes B500-orbit-ring-1 {
+  0% { transform: translate(-50%, -50%) rotateX(70deg) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotateX(70deg) rotate(360deg); }
+}
+
+@keyframes B500-orbit-ring-2 {
+  0% { transform: translate(-50%, -50%) rotateX(60deg) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotateX(60deg) rotate(360deg); }
+}
+
+@keyframes B500-orbit-ring-3 {
+  0% { transform: translate(-50%, -50%) rotateX(50deg) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotateX(50deg) rotate(360deg); }
+}
+
+@keyframes B500-orbit-1 {
+  0% { transform: rotate(0deg) translateX(40vh) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40vh) rotate(-360deg); }
+}
+
+@keyframes B500-orbit-2 {
+  0% { transform: rotate(0deg) translateX(30vh) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(30vh) rotate(-360deg); }
+}
+
+@keyframes B500-orbit-3 {
+  0% { transform: rotate(0deg) translateX(20vh) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(20vh) rotate(-360deg); }
+}
+
+@keyframes B500-orbit-4 {
+  0% { transform: rotate(0deg) translateX(15vh) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(15vh) rotate(-360deg); }
+}
+
+@keyframes B500-core-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+@keyframes B500-hud-scan {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes B500-hud-scan-vertical {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes B500-text-glitch {
+  0%, 100% { text-shadow: 0 0 10px var(--B500-neon-blue), 0 0 20px var(--B500-neon-blue); }
+  50% { text-shadow: 0 0 15px var(--B500-neon-pink), 0 0 25px var(--B500-neon-pink); }
+}
+
+@keyframes B500-dots-pulse {
+  0%, 20% { opacity: 1; }
+  60% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes B500-particle-float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(var(--tx), var(--ty)) scale(1);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--tx) * 1.5), calc(var(--ty) * 1.5)) scale(0.5);
+  }
+}
+
+@keyframes B500-binary-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes B500-code-flicker {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes B500-wave-move {
+  0% { mask-position: 0 bottom; }
+  100% { mask-position: 1200px bottom; }
+}
+
+@keyframes B500-progress-pulse {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+@keyframes B500-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Generate random positions for particles */
+.B500-cyber-particles .B500-cyber-particle:nth-child(1) { --tx: 50px; --ty: -30px; animation-delay: 0.1s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(2) { --tx: -40px; --ty: 60px; animation-delay: 0.8s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(3) { --tx: 70px; --ty: 40px; animation-delay: 1.5s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(4) { --tx: -60px; --ty: -50px; animation-delay: 2.2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(5) { --tx: 30px; --ty: 70px; animation-delay: 0.5s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(6) { --tx: -70px; --ty: 30px; animation-delay: 1.8s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(7) { --tx: 40px; --ty: -60px; animation-delay: 2.5s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(8) { --tx: -30px; --ty: 50px; animation-delay: 0.3s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(9) { --tx: 60px; --ty: -40px; animation-delay: 1.2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(10) { --tx: -50px; --ty: 70px; animation-delay: 2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(11) { --tx: 20px; --ty: -20px; animation-delay: 0.7s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(12) { --tx: -80px; --ty: 40px; animation-delay: 1.9s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(13) { --tx: 50px; --ty: 60px; animation-delay: 0.4s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(14) { --tx: -60px; --ty: -30px; animation-delay: 2.3s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(15) { --tx: 30px; --ty: 40px; animation-delay: 1.1s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(16) { --tx: -40px; --ty: 50px; animation-delay: 0.9s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(17) { --tx: 70px; --ty: -20px; animation-delay: 2.1s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(18) { --tx: -20px; --ty: 80px; animation-delay: 0.6s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(19) { --tx: 40px; --ty: -70px; animation-delay: 1.7s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(20) { --tx: -70px; --ty: -40px; animation-delay: 2.4s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(21) { --tx: 90px; --ty: 10px; animation-delay: 0.2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(22) { --tx: -10px; --ty: -90px; animation-delay: 1.4s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(23) { --tx: 80px; --ty: -80px; animation-delay: 2.6s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(24) { --tx: -90px; --ty: 20px; animation-delay: 0.8s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(25) { --tx: 10px; --ty: 90px; animation-delay: 1.6s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(26) { --tx: -80px; --ty: -10px; animation-delay: 2.8s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(27) { --tx: 100px; --ty: 30px; animation-delay: 0.4s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(28) { --tx: -30px; --ty: -100px; animation-delay: 1.8s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(29) { --tx: 90px; --ty: -60px; animation-delay: 2.2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(30) { --tx: -100px; --ty: 40px; animation-delay: 0.6s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(31) { --tx: 20px; --ty: 100px; animation-delay: 1.2s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(32) { --tx: -90px; --ty: -20px; animation-delay: 2.4s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(33) { --tx: 110px; --ty: 50px; animation-delay: 0.3s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(34) { --tx: -50px; --ty: -110px; animation-delay: 1.5s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(35) { --tx: 100px; --ty: -40px; animation-delay: 2.7s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(36) { --tx: -110px; --ty: 60px; animation-delay: 0.7s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(37) { --tx: 30px; --ty: 110px; animation-delay: 1.9s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(38) { --tx: -100px; --ty: -30px; animation-delay: 2.1s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(39) { --tx: 120px; --ty: 70px; animation-delay: 0.5s; }
+.B500-cyber-particles .B500-cyber-particle:nth-child(40) { --tx: -70px; --ty: -120px; animation-delay: 1.7s; }
+
+/* Generate random positions for binary digits */
+.B500-binary-rain .B500-binary-digit:nth-child(1) { left: 5%; animation-delay: 0.1s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(2) { left: 10%; animation-delay: 1.2s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(3) { left: 15%; animation-delay: 2.3s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(4) { left: 20%; animation-delay: 3.4s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(5) { left: 25%; animation-delay: 4.5s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(6) { left: 30%; animation-delay: 0.6s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(7) { left: 35%; animation-delay: 1.7s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(8) { left: 40%; animation-delay: 2.8s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(9) { left: 45%; animation-delay: 3.9s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(10) { left: 50%; animation-delay: 0.2s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(11) { left: 55%; animation-delay: 1.3s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(12) { left: 60%; animation-delay: 2.4s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(13) { left: 65%; animation-delay: 3.5s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(14) { left: 70%; animation-delay: 4.6s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(15) { left: 75%; animation-delay: 0.7s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(16) { left: 80%; animation-delay: 1.8s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(17) { left: 85%; animation-delay: 2.9s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(18) { left: 90%; animation-delay: 3.0s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(19) { left: 95%; animation-delay: 4.1s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(20) { left: 12%; animation-delay: 0.4s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(21) { left: 22%; animation-delay: 1.5s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(22) { left: 32%; animation-delay: 2.6s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(23) { left: 42%; animation-delay: 3.7s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(24) { left: 52%; animation-delay: 4.8s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(25) { left: 62%; animation-delay: 0.9s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(26) { left: 72%; animation-delay: 1.0s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(27) { left: 82%; animation-delay: 2.1s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(28) { left: 92%; animation-delay: 3.2s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(29) { left: 8%; animation-delay: 4.3s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(30) { left: 18%; animation-delay: 0.5s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(31) { left: 28%; animation-delay: 1.6s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(32) { left: 38%; animation-delay: 2.7s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(33) { left: 48%; animation-delay: 3.8s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(34) { left: 58%; animation-delay: 4.9s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(35) { left: 68%; animation-delay: 0.3s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(36) { left: 78%; animation-delay: 1.4s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(37) { left: 88%; animation-delay: 2.5s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(38) { left: 98%; animation-delay: 3.6s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(39) { left: 14%; animation-delay: 4.7s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(40) { left: 24%; animation-delay: 0.8s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(41) { left: 34%; animation-delay: 1.9s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(42) { left: 44%; animation-delay: 2.0s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(43) { left: 54%; animation-delay: 3.1s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(44) { left: 64%; animation-delay: 4.2s; animation-duration: 10s; }
+.B500-binary-rain .B500-binary-digit:nth-child(45) { left: 74%; animation-delay: 0.4s; animation-duration: 9s; }
+.B500-binary-rain .B500-binary-digit:nth-child(46) { left: 84%; animation-delay: 1.5s; animation-duration: 11s; }
+.B500-binary-rain .B500-binary-digit:nth-child(47) { left: 94%; animation-delay: 2.6s; animation-duration: 7s; }
+.B500-binary-rain .B500-binary-digit:nth-child(48) { left: 6%; animation-delay: 3.7s; animation-duration: 12s; }
+.B500-binary-rain .B500-binary-digit:nth-child(49) { left: 16%; animation-delay: 4.8s; animation-duration: 8s; }
+.B500-binary-rain .B500-binary-digit:nth-child(50) { left: 26%; animation-delay: 0.9s; animation-duration: 10s; }
+
+/* Generate random positions for code strings */
+.B500-random-codes .B500-code-string:nth-child(1) { top: 10%; left: 5%; animation-delay: 0.1s; }
+.B500-random-codes .B500-code-string:nth-child(2) { top: 20%; left: 80%; animation-delay: 1.5s; }
+.B500-random-codes .B500-code-string:nth-child(3) { top: 40%; left: 15%; animation-delay: 2.3s; }
+.B500-random-codes .B500-code-string:nth-child(4) { top: 60%; left: 70%; animation-delay: 0.7s; }
+.B500-random-codes .B500-code-string:nth-child(5) { top: 80%; left: 25%; animation-delay: 3.1s; }
+.B500-random-codes .B500-code-string:nth-child(6) { top: 30%; left: 90%; animation-delay: 1.2s; }
+.B500-random-codes .B500-code-string:nth-child(7) { top: 50%; left: 10%; animation-delay: 2.8s; }
+.B500-random-codes .B500-code-string:nth-child(8) { top: 70%; left: 85%; animation-delay: 0.4s; }

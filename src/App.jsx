@@ -9,8 +9,8 @@ import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound"; // 404 page
 
 import Apps from "./apps/apps"; // main apps page & dynamic handler
-
 import Secret from "./secret/secret"; // secret page
+import B500 from "./B500/app";
 
 function App() {
   document.title = "Srinivas Charan K | Portfolio"; // Set the document title
@@ -22,6 +22,7 @@ function App() {
         <Route path="/myapps" element={<Apps />} />
         <Route path="/myapps/:appName" element={<Apps />} />
         <Route path="/secret" element={<Secret /> } />
+        <Route path="/B500" element={<B500 /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
