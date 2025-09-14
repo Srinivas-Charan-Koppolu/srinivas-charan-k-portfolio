@@ -5,6 +5,7 @@ import "./Gallery.css";
 import mentorImage from "../../assets/gallery/PL_Mentor.jpg";
 import kondapalliImage from "../../assets/gallery/Kondapalli.jpg";
 import innovationImage from "../../assets/gallery/DTI.jpg";
+import sih2025Image from "./../../assets/gallery/sih2025Image.jpg"
 
 const galleryItems = [
   {
@@ -24,6 +25,12 @@ const galleryItems = [
     alt: "DTI Team",
     title: "Innovation Ten - App Monsters",
     desc: "We are a team of 10, creating a strong skill sector by designing real-life scenarios.",
+  },
+  {
+    src: sih2025Image,
+    alt: "Team SIH 2025",
+    title: "Luminous",
+    desc: "Glow beyond the time - sleep. Tidea of shining even in moments of rest.",
   },
 ];
 
