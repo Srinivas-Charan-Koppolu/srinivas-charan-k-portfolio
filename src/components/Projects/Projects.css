@@ -2,116 +2,77 @@
 .projects-section {
   padding: 80px 0;
   position: relative;
-  overflow: hidden;
+  background-color: var(--bg-color);
 }
 
 /* Title Styling */
 .section-title {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .section-title h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: bold;
+  color: var(--primary-color);
 }
 
 .section-title .highlight {
-  color: var(--primary-color);
+  color: var(--highlight-blue);
 }
 
 .section-title p {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-top: 10px;
 }
 
-/* Horizontal Scrolling Wrapper */
+/* Wrapper for Projects */
 .projects-wrapper {
   display: flex;
-  overflow-x: auto;
-  gap: 50px;
-  padding: 20px 0;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  gap: 20px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  padding: 0 20px;
   position: relative;
-  zoom: 0.8;
-
-  /* Hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-}
-
-.projects-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  overflow: hidden;
 }
 
 /* Project Card Styling */
 .project-card {
   background: var(--surface-dark);
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
-  width: 480px; /* wider and balanced */
-  flex-shrink: 0;
-  scroll-snap-align: center;
-  margin: 5px 20px;
-
-  /* 3D effect base */
-  transform-style: preserve-3d;
-  perspective: 1200px;
+  width: 45%;
+  position: relative;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); /* Neumorphism shadow */
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px) scale(1.05) rotateX(5deg) rotateY(-5deg);
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.6),   /* deep shadow */
-    0 5px 15px rgba(0, 0, 0, 0.4),    /* mid shadow */
-    0 0 25px rgba(0, 255, 180, 0.4);  /* glowing aura */
-  border: 1px solid rgba(0, 255, 180, 0.3); /* neon mint border */
+  transform: translateY(-8px);
 }
 
-/* Project Image Container */
-.project-img {
-  position: relative;
+.project-card .project-img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   overflow: hidden;
 }
 
-.project-img img {
+.project-card .project-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(2px);
-  transform: scale(1.1);
-  transition: all 0.8s ease;
 }
 
-/* Vintage black gradient overlay */
-.project-img .img-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 65%, rgba(0, 63, 69, 0.75));
-  pointer-events: none;
-}
-
-/* Hover: clear + zoom */
-.project-card:hover .project-img img {
-  filter: blur(0);
-  transform: scale(1.25);
-  transform: translateY(5px);
-}
-
-/* Project Info Section */
 .project-info {
-  padding: 18px;
+  padding: 20px;
+  background-color: var(--surface-light);
+  height: 100%;
 }
 
 .project-info h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 8px;
   color: var(--text-color);
 }
@@ -120,106 +81,93 @@
   font-size: 0.85rem;
   color: var(--highlight-blue);
   margin-bottom: 10px;
-  font-style: italic;
 }
 
 .project-info p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  margin-bottom: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-/* Tech tags */
-.project-tech {
+/* Faded effect for third project card */
+.project-card.faded-card {
+  background: linear-gradient(to right, var(--surface-dark) 60%, rgba(0, 0, 0, 0.5) 100%);
+  filter: blur(3px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+/* Load More Button (Arrow) */
+.load-more-wrapper {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  right: 20px;
+  transform: translateX(-50%) translateY(-50%);
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
+  align-items: center;
 }
 
-.tech-item {
-  background: var(--primary-dark);
-  color: var(--text-color);
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
+/* Arrow button styling */
+.load-more {
+  padding: 15px;
+  background: linear-gradient(to right, transparent, var(--primary-color));
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem; /* Larger font size for the arrow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  opacity: 0.6;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); /* Neumorphism shadow */
+  height: 100%;
+  width: 100px; /* Fixed width for the arrow */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* The arrow itself */
+.arrow {
+  font-size: 2.5rem;  /* Bigger size to fill the button */
   transition: all 0.3s ease;
 }
 
-.tech-item:hover {
-  background-color: var(--highlight-blue);
-  color: #fff;
+.load-more:hover  {
+  opacity: 1;
 }
 
-/* Project Links */
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+.load-more:hover .arrow {
+  scale: 1.2; /* Slightly enlarge the arrow on hover */
+  transition: all 0.3s ease;
 }
 
-.project-links a {
-  font-size: 0.9rem;
-  color: var(--highlight-blue);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: color 0.3s ease;
-}
-
-.project-links a:hover {
-  color: var(--primary-color);
-}
-
-/* Scroll Arrows Styling */
-.scroll-arrows {
+/* Fade effect on arrow button background */
+.load-more-wrapper::before {
+  content: "";
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 10;
-  padding: 0 20px;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+  border-radius: 50px;
+  opacity: 0.7;
+  z-index: -1;
 }
 
-.scroll-left,
-.scroll-right {
-  background-color: rgba(0, 0, 0, 0.55);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.scroll-left:hover,
-.scroll-right:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.scroll-left i,
-.scroll-right i {
-  font-size: 20px;
-}
-
-/* Mobile Styling (for smaller screens) */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .projects-wrapper {
-    flex-direction: column;
-    gap: 20px;
-    overflow-x: hidden;
+  .load-more-wrapper {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
   }
 
-  .project-card {
+  .load-more {
     width: 100%;
-  }
-
-  .scroll-arrows {
-    display: none; /* Hide arrows on mobile */
+    font-size: 1.2rem;
   }
 }

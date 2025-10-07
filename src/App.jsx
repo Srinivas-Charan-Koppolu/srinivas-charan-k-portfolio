@@ -11,6 +11,7 @@ import NotFound from "./components/NotFound/NotFound"; // 404 page
 import Apps from "./apps/apps"; // main apps page & dynamic handler
 import Secret from "./secret/secret"; // secret page
 import B500 from "./B500/app";
+import Projects from "./pages/Projects/Projects";
 
 function App() {
   document.title = "Srinivas Charan K | Portfolio"; // Set the document title
@@ -19,10 +20,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/myapps" element={<Apps />} />
         <Route path="/myapps/:appName" element={<Apps />} />
         <Route path="/secret" element={<Secret /> } />
-        <Route path="/B500" element={<B500 /> } />
+        {/* <Route path="/B500" element={<B500 /> } /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
