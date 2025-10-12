@@ -13,6 +13,9 @@ import Secret from "./secret/secret"; // secret page
 import B500 from "./B500/app";
 import Projects from "./pages/Projects/Projects";
 
+// New imports for Stories
+import Stories from "./Stories/Stories.jsx"; // list of stories
+
 function App() {
   document.title = "Srinivas Charan K | Portfolio"; // Set the document title
   return (
@@ -23,8 +26,13 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/myapps" element={<Apps />} />
         <Route path="/myapps/:appName" element={<Apps />} />
-        <Route path="/secret" element={<Secret /> } />
-        {/* <Route path="/B500" element={<B500 /> } /> */}
+        <Route path="/secret" element={<Secret />} />
+        
+        {/* New Routes for Stories */}
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/stories/:id" element={<Stories />} />
+        
+        {/* <Route path="/B500" element={<B500 />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

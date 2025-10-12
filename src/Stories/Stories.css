@@ -1,0 +1,253 @@
+/* Container */
+.stories-container > * {
+  user-select: none;
+}
+
+.stories-container {
+  padding: 2rem;
+  /* max-width: var(--max-width); */
+  margin: 0 5vw;
+  font-family: var(--font-main);
+  color: var(--apps-text);
+  background-color: var(--apps-bg);
+}
+
+/* Heading */
+.stories-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--apps-text);
+  text-shadow: 0 0 8px var(--apps-text-glow);
+}
+
+/* Stories grid aligned left with padding-left */
+.stories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start; /* align left */
+  padding-left: 1rem;
+}
+
+/* Story Card */
+.stories-container__story-card {
+  background-color: var(--apps-card-bg);
+  border: 1.5px solid var(--apps-card-border);
+  border-radius: 12px;
+  width: 300px;
+  min-height: 150px;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: var(--apps-text);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow:
+    0 0 8px rgba(0, 255, 255, 0.1),
+    inset 0 0 6px rgba(0, 255, 255, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Hover effect */
+.stories-container__story-card:hover,
+.stories-container__story-card:focus {
+  outline: none;
+  transform: scale(1.05);
+  border-color: var(--apps-text-glow);
+  box-shadow:
+    0 0 10px var(--apps-text-glow),
+    0 0 2px var(--apps-text-glow),
+    inset 0 0 6px var(--apps-text-glow);
+}
+
+/* Story title in card */
+.stories-container__story-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  text-shadow: 0 0 2px var(--apps-text-glow);
+}
+
+/* Author in card */
+.stories-container__story-author {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 0;
+  color: var(--apps-text-muted);
+  text-shadow: none !important;
+  margin: 0 0 1rem 0;
+}
+
+/* Snippet in card */
+.stories-container__story-snippet {
+  font-size: 0.95rem;
+  color: var(--apps-text);
+  flex-grow: 1;
+}
+
+/* No stories text */
+.no-stories-text {
+  text-align: center;
+  color: var(--apps-text-muted);
+  font-style: italic;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+/* Story detail container */
+.story-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--apps-text);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  padding: 1rem 2rem;
+}
+
+/* Story detail header (flex for back link and title) */
+.story-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Back link top */
+.back-link-top {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2rem;
+  user-select: none;
+  transition: color 0.25s ease;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--primary-color);
+  line-height: 1;
+}
+
+.back-link-top:hover,
+.back-link:hover {
+  color: var(--highlight-blue);
+  text-decoration: underline;
+}
+
+/* Story detail title */
+.story-detail__title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--apps-text);
+  /* text-shadow: 0 0 4px var(--apps-text-glow); */
+}
+
+/* Story detail author */
+.story-detail__author {
+  font-size: 1rem;
+  color: var(--apps-text-muted);
+  margin-bottom: -0.5rem;
+  font-weight: 600;
+}
+
+/* Divider line */
+.story-detail__divider {
+  border: none;
+  border-top: 1px solid var(--apps-card-border);
+  margin: 1.25rem 0;
+}
+
+/* Story content */
+.story-detail__content {
+  font-size: 1.15rem;
+  white-space: pre-line;
+  margin-bottom: 1.5rem;
+  color: var(--apps-text);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Moral text distinct style */
+.story-detail__moral {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--apps-accent-pink);
+  background-color: rgba(255, 0, 119, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--apps-accent-pink);
+  /* max-width: 600px; */
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
+
+/* Back link bottom */
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+/* Locked story text */
+.story-locked {
+  color: var(--apps-text-muted);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Disable text selection and touch callout */
+.stories-container, 
+.story-detail, 
+.stories-container__story-card {
+  position: relative; /* <-- add this if not already */
+}
+
+/* Watermark overlay */
+.watermark {
+  pointer-events: none; /* Prevent interaction */
+  position: absolute;  /* Position relative to parent */
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.1);
+  user-select: none;
+  z-index: 9999;
+  font-weight: 700;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  mix-blend-mode: screen; /* Makes watermark blend nicely */
+}
+
+/* Adjust vertical position individually */
+.watermark-1 {
+  top: 30%;
+  left: 30%;
+}
+
+.watermark-2 {
+  top: 40%;
+  left: 60%;
+}
+
+.watermark-3 {
+  top: 80%;
+  left: 50%;
+}
+
+/* Disable text selection for everything inside .stories-container */
+/* Completely disable text selection inside the stories area */
+.stories-container,
+.stories-container *,
+.story-detail,
+.story-detail * {
+  -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important;    /* Firefox */
+  -ms-user-select: none !important;     /* IE/Edge */
+  user-select: none !important;         /* Standard */
+  -webkit-touch-callout: none !important; /* iOS Safari long-press */
+}
