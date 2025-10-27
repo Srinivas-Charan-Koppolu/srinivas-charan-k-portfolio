@@ -238,6 +238,33 @@ She just was.
   moral: `Purity is not about perfection — it’s about staying kind, calm, and true to yourself in every small moment.`,
 });
 
+addStory({
+  id: "hidden-pains",
+  title: "Hidden Pains",
+  author: "Thiru",
+  addedOn: "2025-10-27T13:00:00Z",
+  visibility: "visible",
+  content: `
+He used to walk alone. The streets were empty, the night soft and quiet. Cold wind touched his face, carrying the faint smell of wet earth. He whispered to the trees, to the shadows, to the air. They listened. They always listened. 
+
+Sometimes he felt courage in that silence. The world outside felt sharp and heavy, but here, in the empty streets, he could breathe. A bird sat on a fence, shaking its wings. He smiled. "Keep moving," he whispered. And the wind seemed to answer him. 
+
+Days came with crowds and noise. Phones buzzed, laughter filled rooms, conversations moved fast. He tried to speak, but words slipped away, falling clumsy and broken. Faces blurred. He felt like he was behind glass, watching life happen. 
+
+He remembered someone — the one who made him speak, laugh, open his heart. The memory was warm, bright… and then cold. The bond had faded. He felt lost in a crowd, his courage slipping away. Goosebumps rose along his arms. He swallowed, smiled faintly, but inside, a storm twisted. 
+
+In the afternoon, he sat in a coffee shop, cup warm in hands. Outside, life rushed past. Leaves danced. People hurried. He whispered to himself, “Life moves… even if I don’t.” A laugh came from a nearby table. His chest tightened. The joy he once shared was gone, now just a pang he carried alone. 
+
+Evening came. He wandered into the park, still alone. Sun warm on his face, breeze soft. He spoke to the grass, the benches, stray dogs. Small lessons came from small things: “Even small things survive.” A quiet smile appeared. But then a phone buzzed. Nothing important. Still, his heart jumped, hope lost again. 
+
+Back in his room, dim light, city sounds faint. He sat by the window, staring at the moon. Thoughts of the one who made him ambivert returned. He smiled softly, tears hovering. He could not tell anyone this pain. His mind spun uncontrollably. Chest tight. Goosebumps rose as he whispered into the night, "I carry it all… alone."  
+
+This was his world now: quiet streets, silent talks with the world, courage found in solitude, pain hidden from everyone. Alone, but not broken. 
+  `,
+  moral: `
+Some pains cannot be shared. They live quietly inside, carried alone. But even in silence, courage can grow, and the soul can find its strength in the shadows.
+`,
+});
 
 
 
