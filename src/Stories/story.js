@@ -208,6 +208,36 @@ When I finished, the joy and fulfillment I felt were unparalleled. That simple a
 
 
 
+addStory({
+  id: "a-pure-life",
+  title: "A Pure Life",
+  author: "Thiru",
+  addedOn: "2025-10-27T10:00:00Z",
+  visibility: "visible",
+  content: `
+Srestha was a college student — calm, thoughtful, and always gentle in how she moved through her days.
+
+In class, she usually sat near the window, quietly observing the world outside while still being present in the moment. She wasn’t shy, just peaceful. Her friends often said that being around her felt light and easy, like a quiet breeze that carried calm with it.
+
+She wasn’t the kind of person who spoke loudly or drew attention. But with her close friends, she was warm and active — laughing, helping with small things, and joining in their fun. She made sure no one felt left out or hurt by her quiet nature. Around others, she stayed simple, polite, and silent, speaking only when needed.
+
+Sometimes small misunderstandings happened, but Srestha never argued. She waited, gave space, and later smiled as if nothing had gone wrong. Her peace was stronger than any need to prove a point.
+
+At home, life moved smoothly. There was a little pressure about studies and the future, but she handled it with understanding. She knew it came from care, not control.
+
+She liked spending time alone too — walking back from college under the soft evening light, writing small thoughts in her notebook, or just sitting by the window with music in her ears. Those quiet moments made her feel whole.
+
+People around her couldn’t always explain what made her special. It wasn’t her looks or her achievements — it was something inside her. A kind of purity that showed in how she spoke, how she listened, and how she stayed true to herself.
+
+Srestha didn’t chase attention or perfection. She simply chose kindness, even when it was unnoticed. And somehow, that made her unforgettable.
+
+Her life was simple, steady, and real — filled with honesty, care, and peace.  
+She didn’t try to be pure.  
+She just was.
+`,
+  moral: `Purity is not about perfection — it’s about staying kind, calm, and true to yourself in every small moment.`,
+});
+
 
 
 
