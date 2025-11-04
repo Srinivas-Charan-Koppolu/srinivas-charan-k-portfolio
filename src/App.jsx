@@ -16,6 +16,8 @@ import Projects from "./pages/Projects/Projects";
 // New imports for Stories
 import Stories from "./Stories/Stories.jsx"; // list of stories
 
+import Klu from "./klu/klu.jsx"; // KLU main page
+
 function App() {
   document.title = "Srinivas Charan K | Portfolio"; // Set the document title
   return (
@@ -31,6 +33,8 @@ function App() {
         {/* New Routes for Stories */}
         <Route path="/stories" element={<Stories />} />
         <Route path="/stories/:id" element={<Stories />} />
+
+        <Route path="/klu/*" element={<Klu />} />
         
         {/* <Route path="/B500" element={<B500 />} /> */}
         <Route path="*" element={<NotFound />} />

@@ -1,0 +1,207 @@
+/* =========================
+   Attendance Calculator Styles
+   Scoped to .attendance-page
+   ========================= */
+
+.attendance-page {
+  background-color: var(--apps-bg);
+  color: var(--apps-text);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  font-family: var(--font-main);
+}
+
+.attendance-page h1 {
+  text-align: center;
+  color: var(--apps-text-glow);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px var(--apps-text-glow);
+}
+
+.attendance-page input[type="text"],
+.attendance-page input[type="number"] {
+  background-color: var(--apps-card-bg);
+  color: var(--apps-text);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.attendance-page input:focus {
+  border-color: var(--apps-button-bg);
+  box-shadow: 0 0 8px var(--apps-text-glow);
+  outline: none;
+}
+
+.attendance-page .tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.attendance-page .tabs button {
+  background-color: var(--apps-card-bg);
+  color: var(--apps-text);
+  border: 1px solid var(--apps-card-border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.attendance-page .tabs button.active,
+.attendance-page .tabs button:hover {
+  background-color: var(--apps-button-bg);
+  color: var(--apps-button-text);
+  box-shadow: 0 0 10px var(--apps-text-glow);
+}
+
+.attendance-page .input-row {
+  margin-bottom: 1rem;
+}
+
+.attendance-page .input-row label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-page .dual-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.attendance-page .dual-input .divider {
+  font-weight: bold;
+  color: var(--apps-text-muted);
+}
+
+.attendance-page .xy-input {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.attendance-page .xy-input input {
+  width: 60px;
+  text-align: center;
+}
+
+.attendance-page button {
+  background-color: var(--apps-button-bg);
+  color: var(--apps-button-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.attendance-page button:hover {
+  background-color: var(--apps-button-hover);
+  box-shadow: 0 0 10px var(--apps-text-glow);
+}
+
+.attendance-page .results,
+.attendance-page .saved-section {
+  background-color: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.attendance-page .results h2 {
+  color: var(--apps-text-glow);
+  margin-bottom: 0.5rem;
+}
+
+.attendance-page .results ul,
+.attendance-page .saved-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.attendance-page .results li,
+.attendance-page .saved-list li {
+  margin-bottom: 0.5rem;
+}
+
+.attendance-page .saved-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attendance-page .clear-btn {
+  background-color: var(--apps-accent-pink);
+  color: var(--apps-button-text);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.attendance-page .saved-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--apps-card-border);
+}
+
+.attendance-page .saved-buttons button {
+  margin-left: 0.25rem;
+}
+
+.attendance-page .delete-btn {
+  background-color: var(--apps-accent-purple);
+  color: var(--apps-button-text);
+}
+
+.attendance-page .error {
+  color: #ff4c4c;
+  margin-top: 0.5rem;
+}
+
+.attendance-page .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.attendance-page .popup-content {
+  background-color: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+.attendance-page .popup-content h2 {
+  color: var(--apps-text-glow);
+  margin-bottom: 1rem;
+}
+
+.attendance-page .popup-content button {
+  margin-top: 1rem;
+}
+
