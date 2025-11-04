@@ -16,7 +16,7 @@ import Projects from "./pages/Projects/Projects";
 // New imports for Stories
 import Stories from "./Stories/Stories.jsx"; // list of stories
 
-import Klu from "./klu/klu.jsx"; // KLU main page
+import Klu from "./klu/Klu.jsx"; // KLU main page
 
 function App() {
   document.title = "Srinivas Charan K | Portfolio"; // Set the document title
