@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/myapps" element={<MyApps />} />
-        <Route path="/myapps/:appName" element={<Apps />} />
+        <Route path="/myapps/:appName" element={<MyApps />} />
         <Route path="/secret" element={<Secret />} />
         
         {/* New Routes for Stories */}
