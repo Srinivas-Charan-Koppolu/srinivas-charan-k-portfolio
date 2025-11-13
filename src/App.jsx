@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 
 import NotFound from "./components/NotFound/NotFound"; // 404 page
 
-import Apps from "./apps/apps"; // main apps page & dynamic handler
+import MyApps from "./myapps/myapps"; // main apps page & dynamic handler
 import Secret from "./secret/secret"; // secret page
 import B500 from "./B500/app";
 import Projects from "./pages/Projects/Projects";
@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/myapps" element={<Apps />} />
+        <Route path="/myapps" element={<MyApps />} />
         <Route path="/myapps/:appName" element={<Apps />} />
         <Route path="/secret" element={<Secret />} />
         
