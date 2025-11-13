@@ -1,0 +1,120 @@
+.play-apps-container {
+  max-width: var(--max-width);
+  margin: 60px auto;
+  padding: 40px 20px;
+  background: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 16px;
+  font-family: var(--font-main);
+  color: var(--apps-text);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+}
+
+/* Title */
+.play-apps-container .apps-title {
+  text-align: center;
+  color: var(--apps-text-glow);
+  text-shadow: 0 0 10px var(--apps-text-glow);
+  font-size: 2rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* Grid */
+.play-apps-container .apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Card */
+.play-apps-container .app-card {
+  width: 100%;
+  padding: 25px 25px 30px;
+  background: var(--apps-bg);
+  border: 1px solid var(--apps-card-border);
+  border-left: 4px solid var(--accent, var(--apps-text-glow));
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.play-apps-container .app-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle at top left,
+    var(--accent, var(--apps-text-glow)) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.play-apps-container .app-card:hover::before {
+  opacity: 0.15;
+}
+
+.play-apps-container .app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--accent, var(--apps-text-glow));
+  border-color: var(--accent, var(--apps-text-glow));
+}
+
+/* Card content */
+.play-apps-container .app-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.play-apps-container .app-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--accent, var(--apps-text-glow));
+  text-shadow: 0 0 6px var(--accent, var(--apps-text-glow));
+}
+
+.play-apps-container .app-card p {
+  color: var(--apps-text-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Arrow icon */
+.play-apps-container .app-card-arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  font-size: 1.6rem;
+  color: var(--apps-text-muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 2;
+}
+
+.play-apps-container .app-card:hover .app-card-arrow {
+  transform: translateX(6px);
+  color: var(--accent, var(--apps-text-glow));
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .play-apps-container {
+    padding: 25px 15px;
+  }
+
+  .play-apps-container .apps-title {
+    font-size: 1.6rem;
+  }
+
+  .play-apps-container .app-card {
+    padding: 20px;
+  }
+}
