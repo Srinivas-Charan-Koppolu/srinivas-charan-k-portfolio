@@ -1,0 +1,152 @@
+.percentage-calculator {
+  max-width: var(--max-width);
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 12px;
+  font-family: var(--font-main);
+  color: var(--apps-text);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.percentage-calculator h1 {
+  text-align: center;
+  color: var(--apps-text-glow);
+  font-size: 2rem;
+  text-shadow: 0 0 8px var(--apps-text-glow);
+  margin-bottom: 25px;
+}
+
+.percentage-calculator input[type="text"],
+.percentage-calculator input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 16px;
+  margin: 5px 0;
+  border: 1px solid var(--apps-card-border);
+  border-radius: 6px;
+  background-color: var(--apps-bg);
+  color: var(--apps-text);
+}
+
+.percentage-calculator input::placeholder {
+  color: var(--apps-text-muted);
+}
+
+.percentage-calculator button {
+  padding: 8px 15px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--apps-button-bg);
+  color: var(--apps-button-text);
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px var(--apps-button-bg);
+}
+
+.percentage-calculator button:hover {
+  background-color: var(--apps-button-hover);
+  box-shadow: 0 0 15px var(--apps-button-bg);
+}
+
+.percentage-calculator table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+}
+
+.percentage-calculator th,
+.percentage-calculator td {
+  border: 1px solid var(--apps-card-border);
+  padding: 10px;
+  text-align: center;
+  color: var(--apps-text);
+}
+
+.percentage-calculator th {
+  background-color: rgba(0, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.percentage-calculator .removeBtn {
+  background-color: var(--apps-accent-pink);
+  color: var(--apps-button-text);
+  box-shadow: 0 0 6px var(--apps-accent-pink);
+}
+
+.percentage-calculator .removeBtn:hover {
+  background-color: #ff3399;
+  box-shadow: 0 0 12px var(--apps-accent-pink);
+}
+
+.percentage-calculator .weightMsg {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.percentage-calculator .weightMsg.error {
+  color: #ff0055;
+  text-shadow: 0 0 8px #ff0055;
+}
+
+.percentage-calculator .weightMsg.warning {
+  color: #ffcc00;
+  text-shadow: 0 0 6px #ffcc00;
+}
+
+#output {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--apps-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 6px;
+  color: var(--apps-text);
+  white-space: pre-wrap;
+  box-shadow: 0 0 8px var(--apps-text-glow);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  margin: 0 5px;
+  padding: 8px 20px;
+  background-color: var(--apps-card-bg);
+  color: var(--apps-text);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+}
+
+.tabs button.active {
+  background-color: var(--apps-text-glow);
+  color: var(--apps-bg);
+  box-shadow: 0 0 15px var(--apps-text-glow);
+}
+
+.history-tab table {
+  margin-top: 15px;
+  background-color: var(--apps-card-bg);
+}
+
+.history-tab button {
+  margin: 3px;
+  background-color: var(--apps-accent-green);
+  color: var(--apps-button-text);
+  box-shadow: 0 0 6px var(--apps-accent-green);
+}
+
+.history-tab button:hover {
+  box-shadow: 0 0 12px var(--apps-accent-green);
+}

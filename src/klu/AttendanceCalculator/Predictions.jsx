@@ -3,7 +3,7 @@ import {
   computePercentage, 
   calculateFutureAttendance,
   COMPONENT_WEIGHTS
-} from "./attendanceUtils"; // adjust path if needed
+} from "./attendanceUtils";
 
 const Predict = ({ subject, inputs }) => {
   const [predictions, setPredictions] = useState([]);

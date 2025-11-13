@@ -1,0 +1,93 @@
+/* Container */
+.klu-container {
+  max-width: 95%;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--apps-card-bg);
+  border: 1px solid var(--apps-card-border);
+  border-radius: 12px;
+  color: var(--apps-text);
+  font-family: var(--font-main);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+/* Heading */
+.klu-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--apps-text-glow);
+  text-shadow: 0 0 8px var(--apps-text-glow);
+  margin-bottom: 20px;
+}
+
+/* Navigation Menu */
+.klu-container nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.klu-container nav ul li a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid var(--apps-card-border);
+  border-radius: 8px;
+  background-color: var(--apps-card-bg);
+  color: var(--apps-text);
+  font-weight: 600;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.klu-container nav ul li a:hover {
+  background-color: var(--apps-text-glow);
+  color: var(--apps-bg);
+  box-shadow: 0 0 12px var(--apps-text-glow);
+}
+
+/* Back Button */
+.klu-container button {
+  padding: 8px 15px;
+  margin: 10px 0;
+  background-color: var(--apps-accent-purple);
+  color: var(--apps-button-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--apps-accent-purple);
+  transition: all 0.2s ease;
+}
+
+.klu-container button:hover {
+  background-color: var(--apps-accent-pink);
+  box-shadow: 0 0 15px var(--apps-accent-pink);
+}
+
+/* Horizontal Rule */
+.klu-container hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--apps-card-border);
+  margin: 25px 0;
+}
+
+/* Placeholder / default text */
+.klu-container p {
+  text-align: center;
+  color: var(--apps-text-muted);
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .klu-container nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
