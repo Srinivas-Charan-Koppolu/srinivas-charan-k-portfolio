@@ -1,5 +1,8 @@
 // src/pages/Klu/PercentageCalculator/PercentageCalculator.jsx
 import React, { useState, useEffect } from "react";
+
+import { SUBJECT_TEMPLATES, getSubjectTemplateById } from "./loadsubjects.jsx";
+
 import "./PercentageCalculator.css";
 
 const LOCAL_STORAGE_KEY = "SCK-KL-PercentageHistory";
@@ -12,14 +15,34 @@ const PercentageCalculator = () => {
   const [output, setOutput] = useState("");
   const [weightMsg, setWeightMsg] = useState("");
   const [history, setHistory] = useState([]);
-  const [activeTab, setActiveTab] = useState("calculator"); // "calculator" or "history"
+  const [activeTab, setActiveTab] = useState("calculator");
 
   // Load history on component mount
   useEffect(() => {
-    const storedHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    const storedHistory =
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
     setHistory(storedHistory);
   }, []);
 
+  // ----------------- LOAD TEMPLATE BY ID -----------------
+  const loadTemplate = (id) => {
+    const template = getSubjectTemplateById(id);
+    if (!template) return;
+
+    setSubjectName(template.subject);
+
+    setComponents(
+      template.components.map((c, idx) => ({
+        id: idx + 1,
+        name: c.name,
+        weight: c.weight,
+        max: c.max,
+        marks: "",
+      }))
+    );
+  };
+
+  // Add a component row
   const addComponent = () => {
     setComponents((prev) => [
       ...prev,
@@ -37,6 +60,7 @@ const PercentageCalculator = () => {
     );
   };
 
+  // ----------------- CALCULATE GRADE -----------------
   const calculateGrade = (compList = components) => {
     let totalGrade = 0;
     let totalWeight = 0;
@@ -58,9 +82,14 @@ const PercentageCalculator = () => {
     });
 
     // Weightage message
-    if (totalWeight > 100) setWeightMsg("Error: Total weightage exceeds 100%!");
+    if (totalWeight > 100)
+      setWeightMsg("Error: Total weightage exceeds 100%!");
     else if (totalWeight < 100)
-      setWeightMsg(`Warning: Still ${(100 - totalWeight).toFixed(2)}% weightage is missing!`);
+      setWeightMsg(
+        `Warning: Still ${(100 - totalWeight).toFixed(
+          2
+        )}% weightage is missing!`
+      );
     else setWeightMsg("");
 
     // Determine grade
@@ -74,29 +103,37 @@ const PercentageCalculator = () => {
     else if (totalGrade >= 30) grade = "C";
     else grade = "D";
 
-    let outputText = `Subject: ${subjectName || "Subject"}\nTotal Marks Obtained: ${totalGrade.toFixed(
+    let outputText = `Subject: ${
+      subjectName || "Subject"
+    }\nTotal Marks Obtained: ${totalGrade.toFixed(
       2
     )}%\nGrade: ${grade}\n---\n`;
 
     if (missingComponents.length > 0)
-      outputText += `These components are missing: ${missingComponents.join(", ")}\n`;
+      outputText += `These components are missing: ${missingComponents.join(
+        ", "
+      )}\n`;
 
-    if (totalWeight < 100) outputText += `Still ${(100 - totalWeight).toFixed(2)}% weightage is missing`;
+    if (totalWeight < 100)
+      outputText += `Still ${(100 - totalWeight).toFixed(
+        2
+      )}% weightage is missing`;
 
     setOutput(outputText);
   };
 
   const copyOutput = () => {
-    navigator.clipboard.writeText(output).then(() => alert("Output copied to clipboard!"));
+    navigator.clipboard
+      .writeText(output)
+      .then(() => alert("Output copied to clipboard!"));
   };
 
-  // ----------------- HISTORY FUNCTIONS -----------------
-
+  // ----------------- HISTORY -----------------
   const saveToHistory = () => {
     const newRecord = {
-      id: Date.now(), // unique ID
+      id: Date.now(),
       subject: subjectName,
-      components: components.map((c) => ({ ...c })), // deep copy
+      components: components.map((c) => ({ ...c })),
     };
 
     const updatedHistory = [...history, newRecord];
@@ -119,9 +156,24 @@ const PercentageCalculator = () => {
   };
 
   // ----------------- UI -----------------
-
   return (
     <div className="percentage-calculator">
+
+      {/* ---------------- TEMPLATE SCROLLER ---------------- */}
+      <span style={{background: "#330000", padding: "5px", borderRadius: "10px", fontSize: "10px"}}>!! Select the template carefully | If you need any template - Send me out the details (You can find the message box near Home Contact)</span>
+      <div className="template-scroller"> 
+        <span className="template-chip" style={{background:"transparent",border:"0px",color:"red"}}>Subject: </span> 
+        {SUBJECT_TEMPLATES.map((subj) => (
+          <span
+            key={subj.id}
+            className="template-chip"
+            onClick={() => loadTemplate(subj.id)}
+          >
+            {subj.subject}
+          </span>
+        ))}
+      </div>
+
       <h1>Course Grade Calculator</h1>
 
       <div className="tabs">
@@ -139,6 +191,7 @@ const PercentageCalculator = () => {
         </button>
       </div>
 
+      {/* ---------------- CALCULATOR TAB ---------------- */}
       {activeTab === "calculator" && (
         <>
           <label>
@@ -170,7 +223,9 @@ const PercentageCalculator = () => {
                     <input
                       type="text"
                       value={c.name}
-                      onChange={(e) => updateComponent(c.id, "name", e.target.value)}
+                      onChange={(e) =>
+                        updateComponent(c.id, "name", e.target.value)
+                      }
                       placeholder="Component Name"
                     />
                   </td>
@@ -179,7 +234,9 @@ const PercentageCalculator = () => {
                       type="number"
                       value={c.weight}
                       min={0}
-                      onChange={(e) => updateComponent(c.id, "weight", e.target.value)}
+                      onChange={(e) =>
+                        updateComponent(c.id, "weight", e.target.value)
+                      }
                     />
                   </td>
                   <td>
@@ -187,7 +244,9 @@ const PercentageCalculator = () => {
                       type="number"
                       value={c.max}
                       min={1}
-                      onChange={(e) => updateComponent(c.id, "max", e.target.value)}
+                      onChange={(e) =>
+                        updateComponent(c.id, "max", e.target.value)
+                      }
                     />
                   </td>
                   <td>
@@ -196,11 +255,16 @@ const PercentageCalculator = () => {
                       value={c.marks}
                       min={0}
                       placeholder="Leave empty if not released"
-                      onChange={(e) => updateComponent(c.id, "marks", e.target.value)}
+                      onChange={(e) =>
+                        updateComponent(c.id, "marks", e.target.value)
+                      }
                     />
                   </td>
                   <td>
-                    <button className="removeBtn" onClick={() => removeComponent(c.id)}>
+                    <button
+                      className="removeBtn"
+                      onClick={() => removeComponent(c.id)}
+                    >
                       Remove
                     </button>
                   </td>
@@ -214,7 +278,11 @@ const PercentageCalculator = () => {
           <button onClick={saveToHistory}>Save to History</button>
 
           {weightMsg && (
-            <div className={`weightMsg ${weightMsg.includes("Error") ? "error" : "warning"}`}>
+            <div
+              className={`weightMsg ${
+                weightMsg.includes("Error") ? "error" : "warning"
+              }`}
+            >
               {weightMsg}
             </div>
           )}
@@ -228,6 +296,7 @@ const PercentageCalculator = () => {
         </>
       )}
 
+      {/* ---------------- HISTORY TAB ---------------- */}
       {activeTab === "history" && (
         <div className="history-tab">
           <h2>Saved History</h2>
@@ -255,8 +324,12 @@ const PercentageCalculator = () => {
                       ))}
                     </td>
                     <td>
-                      <button onClick={() => reuseFromHistory(rec)}>Edit</button>
-                      <button onClick={() => deleteFromHistory(rec.id)}>Delete</button>
+                      <button onClick={() => reuseFromHistory(rec)}>
+                        Edit
+                      </button>
+                      <button onClick={() => deleteFromHistory(rec.id)}>
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}

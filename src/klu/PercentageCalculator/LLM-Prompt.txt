@@ -1,0 +1,41 @@
+I have a subject and its raw evaluation data. Each component has a name, weightage, and max marks, but the data may be unstructured. I want to generate a JavaScript function call in this exact format:
+
+addSubjectTemplate("SubjectName",
+  ["Component1 Name", Component1 Weightage, Component1 MaxMarks],
+  ["Component2 Name", Component2 Weightage, Component2 MaxMarks],
+  ...
+);
+
+Only include the function call, no extra text.
+
+Here is an example:
+
+Input (raw table):
+Skill Sem-End Exam	
+Weightage
+8
+Max Marks
+50
+
+Lab End Semester Exam	
+Weightage
+8
+Max Marks
+50
+
+End Semester Exam	
+Weightage
+24
+Max Marks
+100
+
+Desired Output:
+addSubjectTemplate("ExampleSubject",
+  ["Skill Sem-End Exam", 8, 50],
+  ["Lab End Semester Exam", 8, 50],
+  ["End Semester Exam", 24, 100]
+);
+
+Now, generate the function call for the following subject and give in your copy code block:
+
+[Paste your raw data here]
