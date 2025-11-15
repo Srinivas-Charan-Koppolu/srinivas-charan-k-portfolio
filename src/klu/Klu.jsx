@@ -42,7 +42,7 @@ const Klu = () => {
       <Routes>
         <Route path="/" element={<p>Select a KLU tool or page above.</p>} />
         <Route path="attendance-calculator" element={<AttendanceCalculator />} />
-        <Route path="grade-calculator" element={<PercentageCalculator />} />
+        <Route path="grades-calculator" element={<PercentageCalculator />} />
         <Route path="*" element={<p>Page not found inside KLU.</p>} />
       </Routes>
     </div>

@@ -76,8 +76,8 @@ addSubjectTemplate("Applied Machine Learning for Text Analysis - A Mode",
 
 
 addSubjectTemplate("Compiler Design",
+  ["End Semester Exam", 24, 100],
   ["Lab End Semester Exam", 16, 100],
-  ["End Semester Exam", 24, 25],
   ["Continuous Evaluation - Lab Exercise", 10, 25],
   ["Home Assignment and Textbook", 6, 50],
   ["ALM", 8, 50],
